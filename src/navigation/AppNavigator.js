@@ -35,7 +35,6 @@ export default function AppStackNavigator() {
 
   function _bootstrapAsync() {
     firebase.auth().onAuthStateChanged(user => {
-      console.log(user);
       if (user) {
         user.getIdToken().then(function(idToken) {
           // console.log(idToken);

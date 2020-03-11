@@ -7,7 +7,7 @@
  */
 
 import React from 'react';
-import {NavigationNativeContainer} from '@react-navigation/native';
+import {NavigationContainer} from '@react-navigation/native';
 import {ApolloProvider} from '@apollo/react-hooks';
 
 import AppNavigator from './navigation/AppNavigator';
@@ -19,9 +19,9 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <ContextProvider>
-        <NavigationNativeContainer>
+        <NavigationContainer>
           <AppNavigator />
-        </NavigationNativeContainer>
+        </NavigationContainer>
       </ContextProvider>
     </ApolloProvider>
   );
