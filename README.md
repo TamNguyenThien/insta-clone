@@ -9,14 +9,12 @@
     │   ├── LoginScreen
     │   ├── RegisterScreen
     │   └── ForgotScreen
-    └── DrawerNavigator                 # Drawer
-        └── DashboardNavigator          # Stack
-            ├── TabNavigator            # BottomTab
-            │   ├── HomeScreen
-            │   ├── MessageScreen
-            │   ├── NotificationScreen
-            │   └── ProfileScreen
-            └── PostScreen
+    ├── TabNavigator                # BottomTab
+    │   ├── HomeScreen
+    │   ├── MessageScreen
+    │   ├── PostScreen
+    │   ├── NotificationScreen
+    │   └── ProfileScreen
 
 1. react-navigation
 
