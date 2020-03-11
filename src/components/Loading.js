@@ -6,7 +6,7 @@ export default function Loading() {
     <View style={styles.container}>
       <Image source={require('../assets/loading/image1.gif')} />
     </View>
-  );
+  )
 }
 const styles = StyleSheet.create({
   container: {
@@ -15,4 +15,4 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: '#FFFFFF',
   },
-});
+})

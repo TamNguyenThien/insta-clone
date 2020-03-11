@@ -6,25 +6,23 @@
  * @flow
  */
 
-import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import {ApolloProvider} from '@apollo/react-hooks';
+import React from 'react'
+import {NavigationContainer} from '@react-navigation/native'
 
-import AppNavigator from './navigation/AppNavigator';
-import ContextProvider from './tools/context';
-import client from './tools/apollo';
-import './tools/firebase';
+import AppNavigator from './navigation/AppNavigator'
+import ContextProvider from './tools/context'
+import ApolloClient from './tools/apollo'
 
 function App() {
-  return (
-    <ApolloProvider client={client}>
-      <ContextProvider>
-        <NavigationContainer>
-          <AppNavigator />
-        </NavigationContainer>
-      </ContextProvider>
-    </ApolloProvider>
-  );
+	return (
+		<ContextProvider>
+			<ApolloClient>
+				<NavigationContainer>
+					<AppNavigator />
+				</NavigationContainer>
+			</ApolloClient>
+		</ContextProvider>
+	)
 }
 
-export default App;
+export default App
