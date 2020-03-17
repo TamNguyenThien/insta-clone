@@ -10,7 +10,12 @@ const APP_NAME = {
 	MESSAGE: 'Message',
 	POST: 'Post',
 	NOTIFICATION: 'Notification',
-	PROFILE: 'Profile'
+	PROFILE: 'Profile',
+	MENU: 'Menu',
+	MENU_DETAIL: 'MenuDetail',
+	ADD_MENU: 'AddMenu',
+	DELETE_MENU: 'DeleteMenu',
+	EDIT_MENU: 'EditMenu'
 }
 
 module.exports = APP_NAME
