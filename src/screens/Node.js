@@ -70,7 +70,7 @@ export default function NodeScreen ({ navigation }) {
             </TouchableOpacity>
             <Text style={{ fontSize: 22, textAlign: 'center' }}>Update node</Text>
             <TextInput value={name} style={{ borderWidth: 1, borderRadius: 3, height: 40, marginBottom: 20 }} onChangeText={(value) => setName(value) } />
-            <Button title='Updates' onPress={() => { updateNode({ variables: { _id: idUpd, input: { name } } }); setOpenModalUpd(false) }} />
+            <Button title='Update' onPress={() => { updateNode({ variables: { _id: idUpd, input: { name } } }); setOpenModalUpd(false) }} />
           </View>
         </View>
       </Modal>
