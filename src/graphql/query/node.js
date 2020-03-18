@@ -10,4 +10,4 @@ const GET_NODES = gql`
 	}
 `
 
-export {GET_NODES}
+export { GET_NODES }

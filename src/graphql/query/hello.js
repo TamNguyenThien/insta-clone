@@ -6,4 +6,4 @@ const GET_GREETING = gql`
 	}
 `
 
-export {GET_GREETING}
+export { GET_GREETING }

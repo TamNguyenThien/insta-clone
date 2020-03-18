@@ -10,7 +10,7 @@ import NotificationScreen from '../screens/Notification'
 import ProfileScreen from '../screens/Profile'
 import MenuStack from '../routes/MenuStack'
 
-const Tab = createBottomTabNavigator() 
+const Tab = createBottomTabNavigator()
 
 export default function BottomTabNavigator(props) {
 	return (
