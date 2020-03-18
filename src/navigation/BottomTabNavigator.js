@@ -2,12 +2,13 @@ import React from 'react'
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 
-import {HOME, MESSAGE, POST, NOTIFICATION, PROFILE, MENU} from '../constants'
+import {HOME, MESSAGE, POST, NOTIFICATION, PROFILE, MANAMENT, MENU} from '../constants'
 import HomeScreen from '../screens/Home'
 import MessageScreen from '../screens/Message'
 import PostScreen from '../screens/Post'
 import NotificationScreen from '../screens/Notification'
 import ProfileScreen from '../screens/Profile'
+import ManamentScreen from '../screens/Manament'
 import MenuStack from '../routes/MenuStack'
 
 const Tab = createBottomTabNavigator()
@@ -73,6 +74,15 @@ export default function BottomTabNavigator(props) {
 					)
 				}}
 				children={props => <ProfileScreen {...props} />}
+			/>
+			<Tab.Screen
+				name={MANAMENT}
+				options={{
+					tabBarIcon: ({color, size}) => (
+						<FontAwesome5 name={'folder'} color={color} size={size} />
+					)
+				}}
+				children={props => <ManamentScreen {...props} />}
 			/>
 		</Tab.Navigator>
 	)
