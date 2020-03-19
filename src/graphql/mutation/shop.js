@@ -1,8 +1,8 @@
 import gql from 'graphql-tag'
 
 const CREATE_SHOP = gql`
-  mutation createShop($input: createShopInput!) {
-    createShop(input: $input){
+  mutation createShop($input: CreateShopInput!) {
+    createShop(shopName: $input){
       _id
       name
     }
@@ -10,8 +10,8 @@ const CREATE_SHOP = gql`
 `
 
 const UPDATE_SHOP = gql`
-  mutation updateShop($id: String!, $name: String!) {
-    updateMenu(id: $id, name: $name) {
+  mutation updateShop($_id: ID!, $name: String!) {
+    updateShop(_id: $_id, name: $name) {
       _id
       name
     }
@@ -19,8 +19,8 @@ const UPDATE_SHOP = gql`
 `
 
 const DELETE_SHOP = gql`
-  mutation deleteShop($id: String!) {
-    deleteShop(id: $id) {
+  mutation deleteShop($_id: ID!) {
+    deleteShop(_id: $_id) {
       _id
       name
     }

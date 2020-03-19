@@ -20,7 +20,10 @@ const APP_NAME = {
 	ADD_MENU: 'AddMenu',
 	DELETE_MENU: 'DeleteMenu',
 	EDIT_MENU: 'EditMenu',
-	SHOP_DETAIL: 'ShopDetail'
+	SHOP_DETAIL: 'ShopDetail',
+	ADD_SHOP: 'AddShop',
+	DELETE_SHOP: 'DeleteShop',
+	EDIT_SHOP: 'EditShop'
 }
 
 module.exports = APP_NAME

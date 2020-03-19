@@ -3,19 +3,19 @@ import {Text, StyleSheet, View, SafeAreaView, TouchableOpacity} from 'react-nati
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 import {useQuery} from '@apollo/react-hooks'
 import {SHOPS} from '../../graphql'
-import {SHOP_DETAIL} from '../../constants'
+import {SHOP_DETAIL, ADD_SHOP} from '../../constants'
 import ItemShop from './ItemShop'
 import Loading from '../../components/Loading'
 
 export default function HomeScreen({navigation}) {
-	const {loading, error, data} = useQuery(SHOPS)
+	const {loading, error, data, refetch: refetchShop} = useQuery(SHOPS)
 
 	useLayoutEffect(() => {
 		navigation.setOptions({
 			headerRight: () => (
 				<TouchableOpacity
 					style={{marginRight: 15}}
-					onPress={() => navigation.navigate(SHOP_DETAIL)}>
+					onPress={() => navigation.navigate(ADD_SHOP, {refetchShop})}>
 					<FontAwesome5 name="plus" size={25} />
 				</TouchableOpacity>
 			)
@@ -32,7 +32,18 @@ export default function HomeScreen({navigation}) {
 					(
 						data.shops.map((item, idx) => {
 							return (
-								<ItemShop name={item.name} id={item._id} key={idx} />
+							<TouchableOpacity 
+								onPress={() => navigation.navigate(SHOP_DETAIL, {
+									item, 
+									refetchShop
+								})}
+								key={idx} 
+							>	
+								<ItemShop 
+									name={item.name} 
+									id={item._id} 
+								/>
+							</TouchableOpacity>
 							)
 						})
 					)

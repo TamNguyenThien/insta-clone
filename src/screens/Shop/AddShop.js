@@ -4,24 +4,25 @@ import {
 	StyleSheet,
 	View,
 	TextInput,
-	TouchableOpacity
+	TouchableOpacity,
 } from 'react-native'
 import {useMutation} from '@apollo/react-hooks'
 
-import {UPDATE_SHOP} from '../../graphql'
-import {SHOP_DETAIL, SHOP} from '../../constants'
+import {CREATE_SHOP} from '../../graphql'
 
-export default function EditShop({navigation, route}) {
-  const { item, refetchShop } = route.params
-	const [name, setName] = useState(item.name)
-	const [updateShop] = useMutation(UPDATE_SHOP)
+import {SHOP} from '../../constants'
 
-	const handleEditShop = () => {
+export default function AddMenu({navigation, route}) {
+	const {refetchShop} = route.params
+	const [name, setName] = useState('')
+	const [createShop] = useMutation(CREATE_SHOP)
+	const handleCreateShop = () => {
 		if (name !== '') {
-			updateShop({
+			createShop({
 				variables: {
-					_id: item._id,
-					name
+					input: {
+						name,
+					}
 				}
 			})
 				.then(res => {
@@ -35,36 +36,35 @@ export default function EditShop({navigation, route}) {
 						console.log({
 							title: 'Thành công'
 						})
-						navigation.navigate(SHOP)
 					}
 				})
 				.catch(error => {
-					console.log(error)
+					console.log({
+						title: 'Create failed!'
+					})
 				})
 		}
+		navigation.navigate(SHOP)
 	}
 
 	return (
 			<View style={styles.container}>
-				<Text style={styles.title}>EDIT</Text>
+				<Text style={styles.title}>CREATE</Text>
 				<TextInput
 					multiline
 					style={styles.input}
-					value={name}
 					placeholder="Name..."
 					onChangeText={value => setName(value)}
 				/>
 				<View style={{width: '90%', marginTop: 10}}>
-					<TouchableOpacity style={styles.btn} onPress={handleEditShop}>
-						<Text style={styles.btnTxt}>OK</Text>
+					<TouchableOpacity style={styles.btn} onPress={handleCreateShop}>
+						<Text style={styles.btnTxt}>Create</Text>
 					</TouchableOpacity>
 				</View>
 				<View style={{width: '90%', marginTop: 10}}>
 					<TouchableOpacity
 						style={styles.btn}
-						onPress={() =>
-							navigation.navigate(SHOP_DETAIL)
-						}>
+						onPress={() => navigation.navigate(SHOP)}>
 						<Text style={styles.btnTxt}>Cancel</Text>
 					</TouchableOpacity>
 				</View>

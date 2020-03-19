@@ -8,7 +8,6 @@ import MessageScreen from '../screens/Message'
 import PostScreen from '../screens/Post'
 import NotificationScreen from '../screens/Notification'
 import ProfileScreen from '../screens/Profile'
-import ManamentScreen from '../screens/Manament'
 import MenuStack from '../routes/MenuStack'
 import ManamentStack from '../routes/ManamentStack'
 
