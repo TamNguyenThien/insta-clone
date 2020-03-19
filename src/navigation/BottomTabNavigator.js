@@ -10,6 +10,7 @@ import NotificationScreen from '../screens/Notification'
 import ProfileScreen from '../screens/Profile'
 import ManamentScreen from '../screens/Manament'
 import MenuStack from '../routes/MenuStack'
+import ManamentStack from '../routes/ManamentStack'
 
 const Tab = createBottomTabNavigator()
 
@@ -82,7 +83,7 @@ export default function BottomTabNavigator(props) {
 						<FontAwesome5 name={'folder'} color={color} size={size} />
 					)
 				}}
-				children={props => <ManamentScreen {...props} />}
+				children={props => <ManamentStack {...props} />}
 			/>
 		</Tab.Navigator>
 	)

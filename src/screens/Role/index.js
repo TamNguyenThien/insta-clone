@@ -7,17 +7,12 @@ import {GET_GREETING} from '../../graphql'
 export default function RoleScreen({navigation}) {
 	const {loading, error, data} = useQuery(GET_GREETING)
 
-	console.log(data && data)
+	// console.log(data && data)
 
 	return (
 		<SafeAreaView style={styles.container}>
 			<View style={styles.header}>
-				<FontAwesome5 
-					name={'chevron-left'} 
-					size={30}
-					onPress={() => navigation.navigate('Manament')}
-				/>
-				<Text style={styles.title}>Quyền</Text>
+				<Text>Role</Text>
 			</View>
 		</SafeAreaView>
 	)

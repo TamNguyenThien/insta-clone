@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 
 export default ShopItem = (props) => {
@@ -13,7 +13,6 @@ const styles = StyleSheet.create({
   container: {
     height: 100,
     justifyContent:'center',
-    backgroundColor:'red',
     alignItems: 'center',
     margin: 10
   },

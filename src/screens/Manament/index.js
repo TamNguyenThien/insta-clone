@@ -6,7 +6,7 @@ import {GET_GREETING} from '../../graphql'
 export default function ManamentScreen({navigation}) {
 	const {loading, error, data} = useQuery(GET_GREETING)
 
-	console.log(data && data)
+	// console.log(data && data)
 	const manaments = [
 		{
 			nav: 'Shop',
@@ -23,9 +23,6 @@ export default function ManamentScreen({navigation}) {
 	]
 	return (
 		<SafeAreaView style={styles.container}>
-			<View style={styles.header}>
-				<Text style={styles.title}>Quản lý</Text>
-			</View>
 			{
 				manaments.map((item,idx) => {
 					return (

@@ -1,38 +1,42 @@
-import React from 'react'
-import {Text, StyleSheet, View, SafeAreaView} from 'react-native'
+import React, {useState, useLayoutEffect} from 'react'
+import {Text, StyleSheet, View, SafeAreaView, TouchableOpacity} from 'react-native'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 import {useQuery} from '@apollo/react-hooks'
-import {GET_GREETING} from '../../graphql'
-import ShopItem from './ShopItem'
+import {SHOPS} from '../../graphql'
+import {SHOP_DETAIL} from '../../constants'
+import ItemShop from './ItemShop'
+import Loading from '../../components/Loading'
 
 export default function HomeScreen({navigation}) {
-	const {loading, error, data} = useQuery(GET_GREETING)
+	const {loading, error, data} = useQuery(SHOPS)
 
-	console.log(data && data)
+	useLayoutEffect(() => {
+		navigation.setOptions({
+			headerRight: () => (
+				<TouchableOpacity
+					style={{marginRight: 15}}
+					onPress={() => navigation.navigate(SHOP_DETAIL)}>
+					<FontAwesome5 name="plus" size={25} />
+				</TouchableOpacity>
+			)
+		})
+	}, [navigation])
 
 	return (
 		<SafeAreaView style={styles.container}>
 			<View style={styles.header}>
-				<FontAwesome5 
-					name={'chevron-left'} 
-					size={30}
-					onPress={() => navigation.navigate('Manament')}
-				/>
-				<Text style={styles.title}>Quán Ăn</Text>
-				<FontAwesome5 
-					style={styles.icon}
-					name={'edit'} 
-					size={30}
-					onPress={() => navigation.navigate('Manament')}
-				/>
-				<FontAwesome5 
-					name={'plus'} 
-					size={30}
-					onPress={() => navigation.navigate('Manament')}
-				/>
 			</View>
 			<View style={styles.body}>
-				<ShopItem name='hih' />
+				{
+					loading ? <Loading /> : 
+					(
+						data.shops.map((item, idx) => {
+							return (
+								<ItemShop name={item.name} id={item._id} key={idx} />
+							)
+						})
+					)
+				}
 			</View>
 		</SafeAreaView>
 	)

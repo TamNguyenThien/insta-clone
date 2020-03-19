@@ -5,7 +5,7 @@ export default function DeleteMenu({navigation}) {
 
 	return (
     <View>
-        <Text>Delete</Text>
+        <Text>Edit</Text>
     </View>
 	)
 }
