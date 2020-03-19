@@ -15,7 +15,6 @@ export default function NodeScreen ({ navigation }) {
   const [createNode] = useMutation(CREATE_NODE)
   const [deleteNode] = useMutation(DELETE_NODE)
   const [updateNode] = useMutation(UPDATE_NODE)
-
   return (
     <View style={styles.container}>
       <View style={{ position: 'relative', marginBottom: 50 }}>

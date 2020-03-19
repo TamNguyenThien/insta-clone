@@ -2,12 +2,13 @@ import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 
-import { HOME, MESSAGE, POST, NOTIFICATION, PROFILE } from '../constants'
+import { HOME, MESSAGE, POST, NOTIFICATION, PROFILE, REPORT } from '../constants'
 import HomeScreen from '../screens/Home'
 import MessageScreen from '../screens/Message'
 import PostScreen from '../screens/Post'
 import NotificationScreen from '../screens/Notification'
 import ProfileScreen from '../screens/Profile'
+import ReportScreen from '../screens/report'
 
 const Tab = createBottomTabNavigator()
 
@@ -47,6 +48,15 @@ export default function BottomTabNavigator (props) {
         children={() => <PostScreen {...props} />}
       />
       <Tab.Screen
+        name={REPORT}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <FontAwesome5 name={'folder-open'} color={color} size={size} />
+          )
+        }}
+        children={props => <ReportScreen {...props} />}
+      />
+      <Tab.Screen
         name={NOTIFICATION}
         options={{
           tabBarIcon: ({ color, size }) => (
@@ -64,6 +74,7 @@ export default function BottomTabNavigator (props) {
         }}
         children={props => <ProfileScreen {...props} />}
       />
+      
     </Tab.Navigator>
   )
 }
