@@ -2,7 +2,7 @@ import React from 'react'
 import {createStackNavigator} from '@react-navigation/stack'
 
 import {
-  SHOP, ROLE, NODE, MANAMENT, ADD_SHOP, DELETE_SHOP, EDIT_SHOP ,SHOP_DETAIL
+  SHOP, ROLE, NODE, MANAMENT, ADD_SHOP, DELETE_SHOP, EDIT_SHOP ,SHOP_DETAIL, DISH_DETAIL, EDIT_DISH, DELETE_DISHES,CREATE_DISH
 } from '../constants/index'
 import ShopScreen from '../screens/Shop'
 import RoleScreen from '../screens/Role'
@@ -12,6 +12,10 @@ import AddShop from '../screens/Shop/AddShop'
 import DetailShop from '../screens/Shop/DetailShop'
 import DeleteShop from '../screens/Shop/DeleteShop'
 import EditShop from '../screens/Shop/EditShop'
+import DetailDish from '../screens/Dish/DetailDish'
+import EditDish from '../screens/Dish/EditDish'
+import AddDish from '../screens/Dish/AddDish'
+import DeleteDish from '../screens/Dish/DeleteDish'
 
 const Stack = createStackNavigator()
 
@@ -74,6 +78,34 @@ export default function ManamentStack(props) {
         component={EditShop}
         options={{
 					title: 'Sửa quán ăn'
+				}}
+			/>
+			<Screen
+				name={DISH_DETAIL}
+        component={DetailDish}
+        options={{
+					title: 'Chi tiết món ăn'
+				}}
+			/>
+			<Screen
+				name={EDIT_DISH}
+        component={EditDish}
+        options={{
+					title: 'Sửa món ăn'
+				}}
+			/>
+			<Screen
+				name={CREATE_DISH}
+        component={AddDish}
+        options={{
+					title: 'Thêm món ăn'
+				}}
+			/>
+			<Screen
+				name={DELETE_DISHES}
+        component={DeleteDish}
+        options={{
+					title: 'Xóa món ăn'
 				}}
 			/>
 		</Navigator>

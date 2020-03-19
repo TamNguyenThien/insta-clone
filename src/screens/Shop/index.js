@@ -4,10 +4,10 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 import {useQuery} from '@apollo/react-hooks'
 import {SHOPS} from '../../graphql'
 import {SHOP_DETAIL, ADD_SHOP} from '../../constants'
-import ItemShop from './ItemShop'
+import ItemList from '../../components/ItemList'
 import Loading from '../../components/Loading'
 
-export default function HomeScreen({navigation}) {
+export default function ShopScreen({navigation}) {
 	const {loading, error, data, refetch: refetchShop} = useQuery(SHOPS)
 
 	useLayoutEffect(() => {
@@ -39,7 +39,7 @@ export default function HomeScreen({navigation}) {
 								})}
 								key={idx} 
 							>	
-								<ItemShop 
+								<ItemList 
 									name={item.name} 
 									id={item._id} 
 								/>
