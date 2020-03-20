@@ -11,7 +11,6 @@ import ReportScreen from '../screens/report'
 import MenuStack from '../routes/MenuStack'
 import ManamentStack from '../routes/ManamentStack'
 import UserStack from '../routes/UserStack'
-import ManageStack from '../routes/ManageStack'
 
 const Tab = createBottomTabNavigator()
 
@@ -104,15 +103,6 @@ export default function BottomTabNavigator (props) {
         }}
         children={props => <ManamentStack {...props} />}
       />
-      <Tab.Screen
-				name={MANAGE}
-				options={{
-					tabBarIcon: ({color, size}) => (
-						<FontAwesome5 name={'folder-open'} color={color} size={size} />
-					)
-				}}
-				children={props => <ManageStack {...props} />}
-			/>
     </Tab.Navigator>
   )
 }

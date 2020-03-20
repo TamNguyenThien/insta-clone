@@ -54,10 +54,6 @@ export default function RoleForm({
 		<TouchableWithoutFeedback onPress={Keyboard.dismiss}>
 			<ScrollView>
 				<View style={styles.container}>
-					<Button
-						title="log"
-						onPress={() => console.log(list.filter(i => i.isSelected))}
-					/>
 					<Text style={styles.title}>{title}</Text>
 					<Formik
 						validationSchema={reviewSchema}
