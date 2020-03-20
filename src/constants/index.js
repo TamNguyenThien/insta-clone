@@ -28,7 +28,11 @@ const APP_NAME = {
 	USER_DETAIL: 'UserDetail',
 	ADD_USER: 'AddUser',
 	EDIT_USER: 'EditUser',
-	DELETE_USER: 'DeleteUser'
+	DELETE_USER: 'DeleteUser',
+	DISH_DETAIL: 'DishDetail',
+	DELETE_DISHES: 'DeleteDishes',
+	EDIT_DISH: 'EditDish',
+	CREATE_DISH: 'CreateDish'
 }
 
 module.exports = APP_NAME
