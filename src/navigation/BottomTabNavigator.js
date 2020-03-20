@@ -9,7 +9,8 @@ import {
 	NOTIFICATION,
 	PROFILE,
 	MENU,
-	USER
+	USER,
+	MANAGE
 } from '../constants'
 import HomeScreen from '../screens/Home'
 import MessageScreen from '../screens/Message'
@@ -18,6 +19,7 @@ import NotificationScreen from '../screens/Notification'
 import ProfileScreen from '../screens/Profile'
 import MenuStack from '../routes/MenuStack'
 import UserStack from '../routes/UserStack'
+import ManageStack from '../routes/ManageStack'
 
 const Tab = createBottomTabNavigator()
 
@@ -91,6 +93,15 @@ export default function BottomTabNavigator(props) {
 					)
 				}}
 				children={props => <ProfileScreen {...props} />}
+			/>
+			<Tab.Screen
+				name={MANAGE}
+				options={{
+					tabBarIcon: ({color, size}) => (
+						<FontAwesome5 name={'folder-open'} color={color} size={size} />
+					)
+				}}
+				children={props => <ManageStack {...props} />}
 			/>
 		</Tab.Navigator>
 	)
