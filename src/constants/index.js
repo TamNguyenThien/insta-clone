@@ -11,11 +11,20 @@ const APP_NAME = {
 	POST: 'Post',
 	NOTIFICATION: 'Notification',
 	PROFILE: 'Profile',
+	REPORT: 'Report',
+	MANAMENT: 'Manament',
+	SHOP: 'Shop',
+	ROLE: 'Role',
+	NODE: 'Node',
 	MENU: 'Menu',
 	MENU_DETAIL: 'MenuDetail',
 	ADD_MENU: 'AddMenu',
 	DELETE_MENU: 'DeleteMenu',
 	EDIT_MENU: 'EditMenu',
+	SHOP_DETAIL: 'ShopDetail',
+	ADD_SHOP: 'AddShop',
+	DELETE_SHOP: 'DeleteShop',
+	EDIT_SHOP: 'EditShop',
 	USER: 'User',
 	USER_DETAIL: 'UserDetail',
 	ADD_USER: 'AddUser',
@@ -25,7 +34,11 @@ const APP_NAME = {
 	ROLE: 'Role',
 	ADD_ROLE: 'AddRole',
 	EDIT_ROLE: 'EditRole',
-	DELETE_ROLE: 'DeleteRole'
+	DELETE_ROLE: 'DeleteRole',
+	DISH_DETAIL: 'DishDetail',
+	DELETE_DISHES: 'DeleteDishes',
+	EDIT_DISH: 'EditDish',
+	CREATE_DISH: 'CreateDish'
 }
 
 module.exports = APP_NAME
