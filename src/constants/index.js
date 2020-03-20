@@ -11,6 +11,7 @@ const APP_NAME = {
 	POST: 'Post',
 	NOTIFICATION: 'Notification',
 	PROFILE: 'Profile',
+	REPORT: 'Report',
 	MANAMENT: 'Manament',
 	SHOP: 'Shop',
 	ROLE: 'Role',
