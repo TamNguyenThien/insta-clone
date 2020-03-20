@@ -1,9 +1,7 @@
 import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
-
 import { HOME, MESSAGE, POST, NOTIFICATION, PROFILE, MANAMENT, MENU, REPORT, USER } from '../constants'
-
 import HomeScreen from '../screens/Home'
 import MessageScreen from '../screens/Message'
 import PostScreen from '../screens/Post'
@@ -13,6 +11,7 @@ import ReportScreen from '../screens/report'
 import MenuStack from '../routes/MenuStack'
 import ManamentStack from '../routes/ManamentStack'
 import UserStack from '../routes/UserStack'
+
 const Tab = createBottomTabNavigator()
 
 export default function BottomTabNavigator (props) {
