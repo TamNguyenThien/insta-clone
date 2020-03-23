@@ -2,9 +2,6 @@ import React from 'react'
 import {createStackNavigator} from '@react-navigation/stack'
 
 import {
-<<<<<<< HEAD
-  SHOP, ROLE, NODE, MANAMENT, ADD_SHOP, DELETE_SHOP, EDIT_SHOP ,SHOP_DETAIL, DISH_DETAIL, EDIT_DISH, DELETE_DISH,CREATE_DISH
-=======
 	SHOP,
 	ROLE,
 	ADD_ROLE,
@@ -20,7 +17,6 @@ import {
 	EDIT_DISH,
 	DELETE_DISHES,
 	CREATE_DISH
->>>>>>> f2f31c7947f16a24e4ff42e7de3c59c0fc39ab2a
 } from '../constants/index'
 import ShopScreen from '../screens/Shop'
 import RoleScreen from '../screens/Role'
