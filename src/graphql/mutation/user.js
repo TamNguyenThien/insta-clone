@@ -24,4 +24,11 @@ const DELETE_USER = gql`
 		deleteUser(_id: $id)
 	}
 `
-export {USER_LOGIN, CREATE_USER, UPDATE_USER, DELETE_USER}
+
+const LOCK_UNLOCK_USER = gql`
+	mutation($id: ID!, $reason: String!) {
+		lockAndUnlockUser(_id: $id, reason: $reason)
+	}
+`
+
+export {USER_LOGIN, CREATE_USER, UPDATE_USER, DELETE_USER, LOCK_UNLOCK_USER}

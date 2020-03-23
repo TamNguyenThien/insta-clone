@@ -44,9 +44,13 @@ export default function UserScreen({navigation}) {
 						keyExtractor={item => item._id}
 						data={dataUsers ? dataUsers.users : []}
 						renderItem={({item}) => (
-							<View>
+							<View style={{margin: 5}}>
 								<TouchableOpacity
-									style={styles.content}
+									style={{
+										...styles.content,
+										...(item.isLocked ? styles.locked : null)
+									}}
+									// style={item.isLocked ? styles.locked : null}
 									onPress={() =>
 										navigation.navigate(USER_DETAIL, {item, refetchUsers})
 									}>
@@ -78,8 +82,8 @@ const styles = StyleSheet.create({
 	content: {
 		flexDirection: 'row',
 		borderBottomWidth: 1,
-		borderBottomColor: '#ddd',
-		margin: 5
+		borderBottomColor: '#ddd'
+		// margin: 5
 	},
 	item: {
 		fontSize: 20
@@ -91,5 +95,8 @@ const styles = StyleSheet.create({
 	number: {
 		marginLeft: 'auto',
 		marginRight: 10
+	},
+	locked: {
+		backgroundColor: 'red'
 	}
 })
