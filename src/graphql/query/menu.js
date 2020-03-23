@@ -22,4 +22,14 @@ const GET_MENUS_BY_NODE = gql`
 	}
 `
 
-export {GET_MENUS, GET_MENUS_BY_NODE}
+const DISH_SHOP = gql`
+	query {
+		dish_shop {
+			_id
+			name
+			count
+		}
+	}
+`
+
+export {GET_MENUS, GET_MENUS_BY_NODE, DISH_SHOP}

@@ -30,7 +30,7 @@ const APP_NAME = {
 	EDIT_USER: 'EditUser',
 	DELETE_USER: 'DeleteUser',
 	DISH_DETAIL: 'DishDetail',
-	DELETE_DISHES: 'DeleteDishes',
+	DELETE_DISH: 'DeleteDish',
 	EDIT_DISH: 'EditDish',
 	CREATE_DISH: 'CreateDish'
 }

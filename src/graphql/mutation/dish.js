@@ -1,8 +1,8 @@
 import gql from 'graphql-tag'
 
 const CREATE_DISH = gql`
-  mutation createDish($name: String!, $idShop: ID!) {
-    createDish(name: $name, idShop: $idShop) {
+  mutation createDishAndSaveDish($name: String!, $idShop: ID!) {
+    createDishAndSaveDish(name: $name, idShop: $idShop) {
       name
       _id
     }
@@ -18,10 +18,10 @@ const UPDATE_DISH = gql`
   }
 `
 
-const DELETE_DISHES = gql`
-  mutation deleteDishes($ids: [ID!]) {
-    deleteDishes(ids: $ids)
+const DELETE_DISH = gql`
+  mutation deleteDish($id: ID!, $name: String!) {
+    deleteDish(id: $id, name: $name)
   }
 `
 
-export {CREATE_DISH, UPDATE_DISH, DELETE_DISHES}
+export {CREATE_DISH, UPDATE_DISH, DELETE_DISH}

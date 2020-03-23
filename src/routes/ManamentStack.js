@@ -2,7 +2,7 @@ import React from 'react'
 import {createStackNavigator} from '@react-navigation/stack'
 
 import {
-  SHOP, ROLE, NODE, MANAMENT, ADD_SHOP, DELETE_SHOP, EDIT_SHOP ,SHOP_DETAIL, DISH_DETAIL, EDIT_DISH, DELETE_DISHES,CREATE_DISH
+  SHOP, ROLE, NODE, MANAMENT, ADD_SHOP, DELETE_SHOP, EDIT_SHOP ,SHOP_DETAIL, DISH_DETAIL, EDIT_DISH, DELETE_DISH,CREATE_DISH
 } from '../constants/index'
 import ShopScreen from '../screens/Shop'
 import RoleScreen from '../screens/Role'
@@ -102,7 +102,7 @@ export default function ManamentStack(props) {
 				}}
 			/>
 			<Screen
-				name={DELETE_DISHES}
+				name={DELETE_DISH}
         component={DeleteDish}
         options={{
 					title: 'Xóa món ăn'
