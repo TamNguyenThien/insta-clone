@@ -44,7 +44,7 @@ export default function EditUser({navigation, route}) {
 	}
 
 	const handleCancel = () => {
-		navigation.navigate(USER)
+		navigation.navigate(USER_DETAIL, {item, refetchUsers})
 	}
 
 	return (
