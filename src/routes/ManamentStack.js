@@ -15,7 +15,7 @@ import {
 	SHOP_DETAIL,
 	DISH_DETAIL,
 	EDIT_DISH,
-	DELETE_DISHES,
+	DELETE_DISH,
 	CREATE_DISH
 } from '../constants/index'
 import ShopScreen from '../screens/Shop'
@@ -134,7 +134,7 @@ export default function ManamentStack(props) {
 				}}
 			/>
 			<Screen
-				name={DELETE_DISHES}
+				name={DELETE_DISH}
 				component={DeleteDish}
 				options={{
 					title: 'Xóa món ăn'

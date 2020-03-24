@@ -15,10 +15,10 @@ import {SHOP_DETAIL} from '../../constants'
 export default function AddMenu({navigation, route}) {
 	const {refetchDish, item} = route.params
 	const [name, setName] = useState('')
-  const [createDish] = useMutation(CREATE_DISH)
+  const [createDishAndSaveDish] = useMutation(CREATE_DISH)
 	const handleCreateDish = () => {
 		if (name !== '') {
-			createDish({
+			createDishAndSaveDish({
 				variables: {
             name,
             idShop: item._id

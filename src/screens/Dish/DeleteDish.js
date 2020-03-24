@@ -2,20 +2,19 @@ import React, {useState} from 'react'
 import {Text, StyleSheet, View, TouchableOpacity} from 'react-native'
 import {useMutation} from '@apollo/react-hooks'
 
-import {DELETE_DISHES} from '../../graphql'
+import {DELETE_DISH} from '../../graphql'
 
 import {SHOP_DETAIL} from '../../constants'
 
 export default function DeleteMenu({navigation, route}) {
 	const {item, refetchDish} = route.params
-	const [deleteDishes] = useMutation(DELETE_DISHES)
+	const [deleteDish] = useMutation(DELETE_DISH)
 
 	const handleDeleteDish = () => {
-		deleteDishes({
+		deleteDish({
 			variables: {
-				ids:[
-          item._id
-        ]
+				id: item._id,
+				name: item.name
 			}
 		}).then(() => {
 			refetchDish()

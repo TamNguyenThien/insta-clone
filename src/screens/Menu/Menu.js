@@ -11,10 +11,13 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 import {useQuery} from '@apollo/react-hooks'
 
 import {ADD_MENU, MENU_DETAIL} from '../../constants'
-import {GET_MENUS_BY_NODE, GET_NODES} from '../../graphql/query'
+import {GET_MENUS_BY_NODE, GET_NODES, SHOPS} from '../../graphql/query'
 
 export default function MenuScreen({navigation}) {
 	const [node, setNode] = useState('')
+	const [dataShop, setDataShop] = useState()
+	const [dataNode, setDataNode] = useState()
+	const [dataMenu, setDataMenu] = useState()
 	useLayoutEffect(() => {
 		navigation.setOptions({
 			headerRight: () => (
@@ -26,13 +29,17 @@ export default function MenuScreen({navigation}) {
 			)
 		})
 	}, [navigation, node])
-
-	const {data: dataNode} = useQuery(GET_NODES)
-	const {data: dataMenu, refetch: refetchMenu} = useQuery(GET_MENUS_BY_NODE, {
+	const {data: dataShop1} = useQuery(SHOPS)
+	const {data: dataNode1} = useQuery(GET_NODES)
+	const {data: dataMenu1, refetch: refetchMenu} = useQuery(GET_MENUS_BY_NODE, {
 		variables: {idNode: node},
 		fetchPolicy: 'network-only'
 	})
-
+	useEffect(() =>{
+		setDataMenu(dataMenu1)
+		setDataNode(dataNode1)
+		setDataShop(dataShop1)
+	})
 	return (
 		<View style={styles.container}>
 			<Picker
@@ -62,7 +69,7 @@ export default function MenuScreen({navigation}) {
 									<TouchableOpacity
 										style={styles.content}
 										onPress={() =>
-											navigation.navigate(MENU_DETAIL, {item, refetchMenu})
+											navigation.navigate(MENU_DETAIL, {item, refetchMenu, dataShop})
 										}>
 										<Text style={{...styles.name, ...styles.item}}>
 											{item.name}

@@ -1,7 +1,7 @@
 import React, {useLayoutEffect} from 'react'
 import {Text, StyleSheet, View, TouchableOpacity} from 'react-native'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
-import {EDIT_DISH, DELETE_DISHES} from '../../constants'
+import {EDIT_DISH, DELETE_DISH} from '../../constants'
 
 export default function DishDetailScreen({navigation, route}) {
   const { item, refetchDish } = route.params
@@ -17,7 +17,7 @@ export default function DishDetailScreen({navigation, route}) {
 					<TouchableOpacity
 						style={{marginRight: 15}}
 						onPress={() =>
-							navigation.navigate(DELETE_DISHES, {item, refetchDish})
+							navigation.navigate(DELETE_DISH, {item, refetchDish})
 						}>
 						<FontAwesome5 name="trash-alt" size={25} />
 					</TouchableOpacity>

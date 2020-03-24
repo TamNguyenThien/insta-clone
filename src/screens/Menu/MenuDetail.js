@@ -1,12 +1,10 @@
-import React, {useLayoutEffect} from 'react'
+import React, {useLayoutEffect, useState, useEffect} from 'react'
 import {Text, StyleSheet, View, TouchableOpacity} from 'react-native'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
-// import {useQuery} from '@apollo/react-hooks'
-// import {EDIT_MENU} from '../../graphql'
-import {EDIT_MENU, DELETE_MENU} from '../../constants'
+import MenuPicker from './MenuPicker'
 
 export default function MenuDetailScreen({navigation, route}) {
-	const {item, refetchMenu} = route.params
+	const {item, refetchMenu, dataShop} = route.params
 
 	useLayoutEffect(() => {
 		navigation.setOptions({
@@ -28,20 +26,38 @@ export default function MenuDetailScreen({navigation, route}) {
 			)
 		})
 	}, [navigation])
-
-	console.log(item)
-
 	return (
 		<View style={styles.container}>
-			<Text style={{fontSize: 25}}>{item.name}</Text>
+			<Text style={styles.title}>Tên menu: {item.name}</Text>
+			<View>
+				<MenuPicker dataShop={dataShop} />
+			</View>
 		</View>
 	)
 }
 
 const styles = StyleSheet.create({
+	title: {
+		fontSize: 25, 
+		textAlign:'center',
+		color: '#d1326a',
+		marginTop:10
+	},
 	container: {
-		flex: 1,
-		alignItems: 'center',
-		justifyContent: 'center'
+    margin:10,
+    borderColor: '#bf6363',
+    borderWidth:1
+	},
+	header: {
+		flexDirection:'row',
+		justifyContent:'space-between',
+    margin:10,
+	},
+	title_dish: {
+		fontSize:20,
+		textAlign:'center',
+	},
+	icon: {
+		marginRight: 20
 	}
 })

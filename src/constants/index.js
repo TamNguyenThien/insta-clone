@@ -36,7 +36,7 @@ const APP_NAME = {
 	EDIT_ROLE: 'EditRole',
 	DELETE_ROLE: 'DeleteRole',
 	DISH_DETAIL: 'DishDetail',
-	DELETE_DISHES: 'DeleteDishes',
+	DELETE_DISH: 'DeleteDish',
 	EDIT_DISH: 'EditDish',
 	CREATE_DISH: 'CreateDish'
 }
