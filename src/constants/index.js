@@ -38,7 +38,11 @@ const APP_NAME = {
 	DISH_DETAIL: 'DishDetail',
 	DELETE_DISH: 'DeleteDish',
 	EDIT_DISH: 'EditDish',
-	CREATE_DISH: 'CreateDish'
+	CREATE_DISH: 'CreateDish',
+	PROFILETEMPLATE: 'ProfileTemplate',
+	ADD_PROFILETEMPLATE: 'AddProfileTemplate',
+	EDIT_PROFILETEMPLATE: 'EditProfileTemplate',
+	DELETE_PROFILETEMPLATE: 'DeleteProfileTemplate'
 }
 
 module.exports = APP_NAME
