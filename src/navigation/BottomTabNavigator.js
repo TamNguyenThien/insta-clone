@@ -1,7 +1,7 @@
 import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
-import { HOME, MESSAGE, POST, NOTIFICATION, PROFILE, MANAMENT, MENU, REPORT, USER, PROFILETEMPLATE } from '../constants'
+import { HOME, MESSAGE, POST, NOTIFICATION, PROFILE, MANAMENT, MENU, REPORT, USER, PROFILETEMPLATE, HISTORY } from '../constants'
 import HomeScreen from '../screens/Home'
 import MessageScreen from '../screens/Message'
 import PostScreen from '../screens/Post'
@@ -12,6 +12,7 @@ import MenuStack from '../routes/MenuStack'
 import ManamentStack from '../routes/ManamentStack'
 import UserStack from '../routes/UserStack'
 import ProfileTemplateStack from '../routes/ProfileTemplateStack'
+import HistoryStack from '../routes/HistoryStack'
 
 const Tab = createBottomTabNavigator()
 
@@ -112,6 +113,15 @@ export default function BottomTabNavigator (props) {
           )
         }}
         children={props => <ProfileTemplateStack {...props} />}
+      />
+      <Tab.Screen
+        name={HISTORY}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <FontAwesome5 name={'history'} color={color} size={size} />
+          )
+        }}
+        children={props => <HistoryStack {...props} />}
       />
     </Tab.Navigator>
   )

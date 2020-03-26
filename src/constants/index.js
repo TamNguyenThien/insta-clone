@@ -42,7 +42,10 @@ const APP_NAME = {
 	PROFILETEMPLATE: 'ProfileTemplate',
 	ADD_PROFILETEMPLATE: 'AddProfileTemplate',
 	EDIT_PROFILETEMPLATE: 'EditProfileTemplate',
-	DELETE_PROFILETEMPLATE: 'DeleteProfileTemplate'
+	DELETE_PROFILETEMPLATE: 'DeleteProfileTemplate',
+	HISTORY: 'History',
+	HISTORY_BY_USER: 'HistoryByUser',
+	HISTORY_BY_ORDER: 'HistoryByOrder'
 }
 
 module.exports = APP_NAME
