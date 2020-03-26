@@ -15,9 +15,6 @@ import {GET_MENUS_BY_NODE, GET_NODES, SHOPS} from '../../graphql/query'
 
 export default function MenuScreen({navigation}) {
 	const [node, setNode] = useState('')
-	const [dataShop, setDataShop] = useState()
-	const [dataNode, setDataNode] = useState()
-	const [dataMenu, setDataMenu] = useState()
 	useLayoutEffect(() => {
 		navigation.setOptions({
 			headerRight: () => (
@@ -29,17 +26,12 @@ export default function MenuScreen({navigation}) {
 			)
 		})
 	}, [navigation, node])
-	const {data: dataShop1} = useQuery(SHOPS)
-	const {data: dataNode1} = useQuery(GET_NODES)
-	const {data: dataMenu1, refetch: refetchMenu} = useQuery(GET_MENUS_BY_NODE, {
-		variables: {idNode: node},
-		fetchPolicy: 'network-only'
+	const {data: dataShop} = useQuery(SHOPS)
+	const {data: dataNode} = useQuery(GET_NODES)
+	const {loading, data: dataMenu, refetch: refetchMenu} = useQuery(GET_MENUS_BY_NODE, {
+		variables: {idNode: node}
 	})
-	useEffect(() =>{
-		setDataMenu(dataMenu1)
-		setDataNode(dataNode1)
-		setDataShop(dataShop1)
-	})
+
 	return (
 		<View style={styles.container}>
 			<Picker
@@ -60,16 +52,19 @@ export default function MenuScreen({navigation}) {
 					</Text>
 				</View>
 				<View style={{flex: 1}}>
-					<FlatList
-						keyExtractor={item => item._id}
-						data={dataMenu ? dataMenu.menusByNode : []}
-						renderItem={({item}) => (
-							<View>
+					{
+						!loading && dataMenu.menusByNode.map((item,idx) => 
+							<View key={idx}>
 								{item.isActive && (
 									<TouchableOpacity
 										style={styles.content}
 										onPress={() =>
-											navigation.navigate(MENU_DETAIL, {item, refetchMenu, dataShop})
+											{
+												if(dataShop.shops.length === 0) {
+													return alert('Chưa có Quán Ăn\nVui lòng thêm Quán ăn')
+												}
+												return navigation.navigate(MENU_DETAIL, {refetchMenu, dataShop, item, dataMenu})
+											}
 										}>
 										<Text style={{...styles.name, ...styles.item}}>
 											{item.name}
@@ -82,8 +77,8 @@ export default function MenuScreen({navigation}) {
 									</TouchableOpacity>
 								)}
 							</View>
-						)}
-					/>
+						)
+					}
 				</View>
 			</View>
 		</View>

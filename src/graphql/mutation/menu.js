@@ -25,4 +25,9 @@ const DELETE_MENU = gql`
 	}
 `
 
-export {CREATE_MENU, UPDATE_MENU, DELETE_MENU}
+const UPDATE_MENU_IS_SAVE = gql`
+	mutation updateMenuIsSaved($input: [DishInfoSave], $menuId: ID!, $shopId: ID!) {
+		updateMenuIsSaved(input: $input, menuId: $menuId, shopId: $shopId)
+	}
+`
+export {CREATE_MENU, UPDATE_MENU, DELETE_MENU, UPDATE_MENU_IS_SAVE}

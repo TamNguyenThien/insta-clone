@@ -2,7 +2,6 @@ import React, {useState} from 'react'
 import { View, Text, StyleSheet, TextInput } from 'react-native'
 
 export default ItemListCount = (props) => {
-  const [valueCount, setValueCount] = useState('0')
   const onChanged = (text) => {
     let newText = ''
     let numbers = '0123456789'
@@ -15,19 +14,26 @@ export default ItemListCount = (props) => {
             alert("please enter numbers only")
         }
     }
-    setValueCount(newText)
+    props.onChange({
+      _id: props.dish._id,
+      count: +text
+    })
 }
   return (
   <View style={styles.container_dish}>
     <Text style={styles.title}>{props.dish.name}</Text>
     <TextInput
       style={{
-        padding: 30,
+        padding: 25,
         backgroundColor:'#81a1d6',
+        fontSize: 16,
+        width: 100,
+        textAlign: 'center'
       }}
       keyboardType = 'numeric'
+      placeholder = {props.dataCountDishByMenu.toString()}
       onChangeText={text => onChanged(text)}
-      value={valueCount}
+      value={props.dish.count}
     />
   </View>
   )
@@ -41,7 +47,7 @@ const styles = StyleSheet.create({
     margin: 10,
     backgroundColor:'#a2e1f2',
     flexDirection:'row',
-    justifyContent:'space-around'
+    justifyContent:'space-between'
   },
   title: {
     fontSize: 18
