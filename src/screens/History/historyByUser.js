@@ -10,10 +10,7 @@ export default function HistoryByUserScreen() {
 	const [showEndDate, setShowEndDate] = useState(false)
 	const [startDate, setStartDate] = useState(new Date())
 	const [endDate, setEndDate] = useState(new Date())
-	const [dataRow, setDataRow] = useState([
-		{fullName: 'NGHzxczx', total: 12, _id: 1},
-		{fullName: 'zxczxc', total: '12', _id: 2}
-	])
+	const [dataRow, setDataRow] = useState([])
 	const {data: dataHistory, refetch: refetchHistory} = useQuery(
 		HISTORY_ORDER_BY_USER,
 		{
@@ -139,7 +136,9 @@ const styles = StyleSheet.create({
 		borderRadius: 8,
 		paddingVertical: 14,
 		paddingHorizontal: 10,
-		backgroundColor: '#25f'
+		backgroundColor: '#25f',
+		marginLeft: 20,
+		marginRight: 20
 	},
 	btnTxt: {
 		color: 'white',
