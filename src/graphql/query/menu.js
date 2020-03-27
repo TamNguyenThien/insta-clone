@@ -18,6 +18,12 @@ const GET_MENUS_BY_NODE = gql`
 			name
 			isPublished
 			isActive
+			idShop
+			dishes {
+				_id
+				name
+				count
+			}
 		}
 	}
 `
@@ -32,4 +38,22 @@ const DISH_SHOP = gql`
 	}
 `
 
-export {GET_MENUS, GET_MENUS_BY_NODE, DISH_SHOP}
+const PUBLISH_MENU = gql`
+	mutation publishMenu($name: String!) {
+		publishMenu(name: $name) {
+			_id
+			name
+			isPublished
+		}
+	}
+`
+const UNPUBLISH_MENU = gql`
+	mutation unPublishMenu($name: String!) {
+		unPublishMenu(name: $name) {
+			_id
+			name
+			isPublished
+		}
+	}
+`
+export {GET_MENUS, GET_MENUS_BY_NODE, DISH_SHOP, PUBLISH_MENU, UNPUBLISH_MENU}

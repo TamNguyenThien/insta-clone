@@ -12,12 +12,26 @@ import {useQuery} from '@apollo/react-hooks'
 
 import {ADD_USER, USER_DETAIL} from '../../constants'
 import {GET_USERS} from '../../graphql'
+import * as XLSX from 'xlsx'
 
 export default function UserScreen({navigation}) {
 	const {data: dataUsers, refetch: refetchUsers} = useQuery(GET_USERS, {
 		fetchPolicy: 'network-only'
 	})
-
+  const exportToExcel = async () => {
+    const DataNew = []
+    const fileName = 'danh sách user'
+      dataUsers.users.map(item => {
+          DataNew.push({ fullname: item.fullName })
+          return DataNew
+      })
+      const ws = XLSX.utils.json_to_sheet(DataNew, { skipHeader: true, origin: "A5" })
+      XLSX.utils.sheet_add_aoa(ws, [['Danh sách nhân viên Acexis']], { origin: "A1" })
+      XLSX.utils.sheet_add_aoa(ws, [['Tên nhân viên']], { origin: "A3" })
+      const wb = { Sheets: { data: ws }, SheetNames: ['data'] }
+      XLSX.writeFile(wb, `${fileName}.xlsx`)
+	}
+	
 	useLayoutEffect(() => {
 		navigation.setOptions({
 			headerRight: () => (
@@ -40,6 +54,9 @@ export default function UserScreen({navigation}) {
 					<Text style={{...styles.header, ...styles.number}}>Locked</Text>
 				</View>
 				<View style={{flex: 1}}>
+					<TouchableOpacity onPress={() => exportToExcel()}>
+						<Text>ExportToExcel</Text>
+					</TouchableOpacity>
 					<FlatList
 						keyExtractor={item => item._id}
 						data={dataUsers ? dataUsers.users : []}
