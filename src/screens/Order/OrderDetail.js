@@ -11,7 +11,6 @@ export default function OrderDetailScreen({navigation, route}) {
 	const [cancelOrder] = useMutation(CANCEL_ORDER)
 	const {loading: loadingMe, data: dataMe} = useQuery(ME)
 	const [createOrder, {loading: loadingOrder, data: dateOrder}] = useMutation(CREATE_ORDER)
-	console.log(isOrder)
 	const Create = () => {
 		createOrder({
 			variables: {
@@ -38,6 +37,7 @@ export default function OrderDetailScreen({navigation, route}) {
 			console.log(error)
 		})
 	}
+	console.log(dateOrder.createOrder._id)
 	const Detele = () => {
 		Alert.alert(
 			'Hủy món ăn',
@@ -47,7 +47,7 @@ export default function OrderDetailScreen({navigation, route}) {
 					variables: {
 						input: {
 							idMenu: dataMenu.menuPublishedByNode._id,
-							isOrder: dateOrder._id
+							idOrder: dateOrder.createOrder._id
 						}
 					}
 				}).then(res => {
