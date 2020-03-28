@@ -37,7 +37,6 @@ export default function OrderDetailScreen({navigation, route}) {
 			console.log(error)
 		})
 	}
-	console.log(dateOrder.createOrder._id)
 	const Detele = () => {
 		Alert.alert(
 			'Hủy món ăn',
