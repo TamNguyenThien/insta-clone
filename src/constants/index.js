@@ -45,7 +45,9 @@ const APP_NAME = {
 	DELETE_PROFILETEMPLATE: 'DeleteProfileTemplate',
 	HISTORY: 'History',
 	HISTORY_BY_USER: 'HistoryByUser',
-	HISTORY_BY_ORDER: 'HistoryByOrder'
+	HISTORY_BY_ORDER: 'HistoryByOrder',
+	ORDER: 'Order',
+	ORDER_DETAIL: 'OrderDetail'
 }
 
 module.exports = APP_NAME
