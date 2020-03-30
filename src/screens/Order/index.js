@@ -3,21 +3,20 @@ import {Text, StyleSheet, View, TouchableOpacity, SafeAreaView, ScrollView, Pick
 import {ORDER_DETAIL} from '../../constants'
 import Loading from '../../components/Loading'
 import { useQuery } from '@apollo/react-hooks'
-import { GET_MENU_PUBLISHED_BY_NODE, GET_NODES, CURRENT_USER_ORDER } from '../../graphql'
+import { GET_MENU_PUBLISHED_BY_NODE, GET_NODES, CURRENT_USER_ORDER} from '../../graphql'
 
 export default function OrderScreen({navigation}) {
 	const [node, setNode] = useState('default')
 	const [state, setState] = useState({
 			dishesByMenu: []
 	})
+	const [isActive, setIsActive] = useState(true)
 	const {loading: loadingNode, data: dataNode} = useQuery(GET_NODES)
 	const {loading: loadingMenu, data: dataMenu} = useQuery(GET_MENU_PUBLISHED_BY_NODE, {
 		variables: {
 			idNode: node
 		}
 	})
-	const {loading: loadingCurrentUserOrder, data: dataCurrentUserOrder} = useQuery(CURRENT_USER_ORDER)
-
 	useEffect(() => {
 		if(!loadingMenu) {
 			if(dataMenu.menuPublishedByNode !== null) {
@@ -51,7 +50,9 @@ export default function OrderScreen({navigation}) {
 											return (
 													<TouchableOpacity 
 														key={idx} 
-														onPress={() => navigation.navigate(ORDER_DETAIL, {dataMenu, dish})}
+														onPress={isActive ? () => navigation.navigate(ORDER_DETAIL, {dataMenu, dish, setIsActive}) : 
+														() => alert('Không thể đặt cơm\nBạn đã đặt cơm rồi\nVui lòng hủy món để có thể đặt món khác')
+													}
 													>
 														<ItemList 
 															name={dish.name}

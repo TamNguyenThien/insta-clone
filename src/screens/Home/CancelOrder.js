@@ -6,7 +6,7 @@ import { useQuery, useMutation } from '@apollo/react-hooks'
 import { CURRENT_USER_ORDER, CANCEL_ORDER } from '../../graphql'
 
 export default function OrderDetailScreen({navigation, route}) {
-  const {dataMenu, dish, idOrder} = route.params
+  const {dataMenu, dish, idOrder, setIsActive} = route.params
   const [cancelOrder] = useMutation(CANCEL_ORDER)
   console.log('id',idOrder)
 	const Detele = () => {
@@ -28,6 +28,7 @@ export default function OrderDetailScreen({navigation, route}) {
 							content: res.errors.message
 						})
 					} else {
+            setIsActive(true)
             navigation.navigate(HOME)
 						alert('hủy món thành công')
 					}

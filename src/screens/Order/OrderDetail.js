@@ -6,7 +6,7 @@ import { useQuery, useMutation } from '@apollo/react-hooks'
 import { CREATE_ORDER, ME } from '../../graphql'
 
 export default function OrderDetailScreen({navigation, route}) {
-	const {dataMenu, dish} = route.params
+	const {dataMenu, dish, setIsActive} = route.params
 	const {loading: loadingMe, data: dataMe} = useQuery(ME)
 	const [createOrder] = useMutation(CREATE_ORDER)
 	const Create = () => {
@@ -19,8 +19,9 @@ export default function OrderDetailScreen({navigation, route}) {
 				}
 			}
 		}).then((res) => {
+				setIsActive(false)
 				navigation.navigate(ORDER)
-				navigation.navigate(CANCEL_ORDER,{dataMenu, dish, idOrder: res.data.createOrder._id})
+				navigation.navigate(CANCEL_ORDER,{dataMenu, dish, idOrder: res.data.createOrder._id, setIsActive})
 				alert('Đặt món thành công') 
 		})
 		.catch(error => {

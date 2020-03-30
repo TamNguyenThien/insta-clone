@@ -6,6 +6,7 @@ import { useQuery } from '@apollo/react-hooks'
 import { GET_MENU_PUBLISHED_BY_NODE, GET_NODES, CURRENT_USER_ORDER } from '../../graphql'
 
 export default function OrderScreen({navigation}) {
+
 	return (
 		<SafeAreaView style={styles.container}>
 			<Text style={styles.title}>Bạn chưa đặt cơm</Text>
