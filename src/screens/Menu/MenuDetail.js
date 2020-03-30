@@ -8,7 +8,7 @@ import ItemListCount from '../../components/ItemListCount'
 import {DELETE_MENU, EDIT_MENU, MENU} from '../../constants'
 
 export default function MenuDetailScreen({navigation, route}) {
-	const {item, refetchMenu, dataShop} = route.params 
+	const {item, refetchMenu, dataShop, node} = route.params 
 	const [valuePicker, setValuePicker] = useState(
 		item.idShop ? item.idShop : dataShop.shops[0]._id
 	)
@@ -17,6 +17,7 @@ export default function MenuDetailScreen({navigation, route}) {
 			idShop: valuePicker
 		}
 	})
+	console.log(node)
 	const [publishMenu] = useMutation(PUBLISH_MENU)
 	const [unPublishMenu] = useMutation(UNPUBLISH_MENU)
 	const [updateMenuIsSaved] = useMutation(UPDATE_MENU_IS_SAVE)
@@ -74,7 +75,8 @@ export default function MenuDetailScreen({navigation, route}) {
 			variables: {
 				input: state.dishesByShop,
 				menuId: item._id,
-				shopId: valuePicker
+				shopId: valuePicker,
+				nodeId: node
 			}
 		}).then(() => {
 			refetchMenu()
@@ -83,7 +85,7 @@ export default function MenuDetailScreen({navigation, route}) {
 		})
 		setValuePicker(item.idShop)
 	}
-
+console.log(item.name)
 	const menuPublish = () => {
 		publishMenu({
 			variables: {

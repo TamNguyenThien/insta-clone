@@ -20,4 +20,21 @@ const GET_ORDER_AND_MENU = gql`
 	}
 `
 
-export {GET_ORDER_AND_MENU}
+const GET_MENU_PUBLISHED_BY_NODE = gql`
+  query menuPublishedByNode($idNode: String!) {
+    menuPublishedByNode(idNode: $idNode) {
+      _id
+      name
+      idNode
+      idShop
+      isPublished
+      dishes{
+        _id
+        count
+        name
+      }
+    }
+  }
+`
+
+export {GET_MENU_PUBLISHED_BY_NODE, GET_ORDER_AND_MENU}
