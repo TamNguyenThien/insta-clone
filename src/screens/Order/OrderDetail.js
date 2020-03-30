@@ -1,14 +1,12 @@
 import React, {useEffect, useState} from 'react'
-import {Text, StyleSheet, View, TouchableOpacity, SafeAreaView, Alert} from 'react-native'
-import {ORDER} from '../../constants'
+import {ORDER, CANCEL_ORDER} from '../../constants'
 import Loading from '../../components/Loading'
 import { useQuery, useMutation } from '@apollo/react-hooks'
-import { CREATE_ORDER, ME, CANCEL_ORDER } from '../../graphql'
+import {Text, StyleSheet, View, TouchableOpacity, SafeAreaView, Alert} from 'react-native'
+import { CREATE_ORDER, ME } from '../../graphql'
 
 export default function OrderDetailScreen({navigation, route}) {
-	const {dataMenu, dish} = route.params
-	const [isOrder, setIsOrder] = useState(true)
-	const [cancelOrder] = useMutation(CANCEL_ORDER)
+	const {dataMenu, dish, setIsActive} = route.params
 	const {loading: loadingMe, data: dataMe} = useQuery(ME)
 	const [createOrder, {loading: loadingOrder, data: dateOrder}] = useMutation(CREATE_ORDER)
 	const Create = () => {
@@ -20,71 +18,27 @@ export default function OrderDetailScreen({navigation, route}) {
 					idUser: dataMe.me._id
 				}
 			}
-		}).then(res => {
-			if (res.errors) {
-				console.log({
-					type: 'error',
-					content: res.errors.message
-				})
-			} else {
-				alert('Đặt món thành công')
-				setIsOrder(prev => 
-					!prev
-				)
-			}
+		}).then((res) => {
+				setIsActive(false)
+				navigation.navigate(ORDER)
+				navigation.navigate(CANCEL_ORDER,{dataMenu, dish, idOrder: res.data.createOrder._id, setIsActive})
+				alert('Đặt món thành công') 
 		})
 		.catch(error => {
 			console.log(error)
 		})
 	}
-	const Detele = () => {
-		Alert.alert(
-			'Hủy món ăn',
-			'Bạn có chắc chắn muốn hủy món ăn không ?',
-			[
-				{text: 'OK', onPress: () => cancelOrder({
-					variables: {
-						input: {
-							idMenu: dataMenu.menuPublishedByNode._id,
-							idOrder: dateOrder.createOrder._id
-						}
-					}
-				}).then(res => {
-					if (res.errors) {
-						console.log({
-							type: 'error',
-							content: res.errors.message
-						})
-					} else {
-						alert('hủy món thành công')
-						setIsOrder(prev => 
-							!prev
-						)
-					}
-				})
-				.catch(error => {
-					console.log(error)
-				})
-			},
-			{text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
-			],
-			{ cancelable: false }
-		)
-	}
 	return (
 		<SafeAreaView style={{alignItems:'center'}}>
 			<View style={styles.container}>
-				<Text style={styles.title}>com chien</Text>
+				<Text style={styles.title}>{dish.name}</Text>
 					<View style={styles.body}>
 					</View>
 			</View>	
 			{
-				isOrder ? <TouchableOpacity style={styles.btn} onPress={() => Create()}>
+				<TouchableOpacity style={styles.btn} onPress={() => Create()}>
 					<Text style={styles.btnTxt}>Đặt món</Text> 
-					</TouchableOpacity> :
-					<TouchableOpacity style={styles.btn} onPress={() => Detele()}>
-						<Text style={styles.btnTxt}>Hủy món</Text> 
-					</TouchableOpacity>
+				</TouchableOpacity>
 			}
 		</SafeAreaView>
 	)

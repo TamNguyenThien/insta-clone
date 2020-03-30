@@ -17,4 +17,15 @@ const GET_MENU_PUBLISHED_BY_NODE = gql`
   }
 `
 
-export {GET_MENU_PUBLISHED_BY_NODE}
+const CURRENT_USER_ORDER = gql`
+  query currentUserOrder {
+    currentUserOrder {
+      _id
+      idUser
+      idDish
+      isConfirmed
+    }
+  }
+`
+
+export {GET_MENU_PUBLISHED_BY_NODE, CURRENT_USER_ORDER}

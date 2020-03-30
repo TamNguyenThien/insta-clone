@@ -10,6 +10,7 @@ export default function OrderScreen({navigation}) {
 	const [state, setState] = useState({
 			dishesByMenu: []
 	})
+	const [isActive, setIsActive] = useState(true)
 	const {loading: loadingNode, data: dataNode} = useQuery(GET_NODES)
 	const {loading: loadingMenu, data: dataMenu} = useQuery(GET_MENU_PUBLISHED_BY_NODE, {
 		variables: {
@@ -50,7 +51,9 @@ export default function OrderScreen({navigation}) {
 											return (
 													<TouchableOpacity 
 														key={idx} 
-														onPress={() => navigation.navigate(ORDER_DETAIL, {dataMenu, dish})}
+														onPress={isActive ? () => navigation.navigate(ORDER_DETAIL, {dataMenu, dish, setIsActive}) : 
+														() => alert('Không thể đặt cơm\nBạn đã đặt cơm rồi\nVui lòng hủy món để có thể đặt món khác')
+													}
 													>
 														<ItemList 
 															name={dish.name}

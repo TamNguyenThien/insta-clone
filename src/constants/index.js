@@ -47,7 +47,8 @@ const APP_NAME = {
 	HISTORY_BY_USER: 'HistoryByUser',
 	HISTORY_BY_ORDER: 'HistoryByOrder',
 	ORDER: 'Order',
-	ORDER_DETAIL: 'OrderDetail'
+	ORDER_DETAIL: 'OrderDetail',
+	CANCEL_ORDER: 'CancelOrder'
 }
 
 module.exports = APP_NAME

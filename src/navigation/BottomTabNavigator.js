@@ -13,6 +13,7 @@ import ManamentStack from '../routes/ManamentStack'
 import UserStack from '../routes/UserStack'
 import ProfileTemplateStack from '../routes/ProfileTemplateStack'
 import HistoryStack from '../routes/HistoryStack'
+import HomeStack from '../routes/HomeStack'
 
 const Tab = createBottomTabNavigator()
 
@@ -31,7 +32,7 @@ export default function BottomTabNavigator (props) {
             <FontAwesome5 name={'home'} color={color} size={size} />
           )
         }}
-        children={() => <HomeScreen {...props} />}
+        children={() => <HomeStack {...props} />}
       />
       <Tab.Screen
         name={ORDER}
