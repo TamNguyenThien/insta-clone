@@ -3,7 +3,7 @@ import {Text, StyleSheet, View, TouchableOpacity, SafeAreaView, ScrollView, Pick
 import {ORDER_DETAIL} from '../../constants'
 import Loading from '../../components/Loading'
 import { useQuery } from '@apollo/react-hooks'
-import { GET_MENU_PUBLISHED_BY_NODE, GET_NODES, CURRENT_USER_ORDER} from '../../graphql'
+import { GET_MENU_PUBLISHED_BY_NODE, GET_NODES } from '../../graphql'
 
 export default function OrderScreen({navigation}) {
 	const [node, setNode] = useState('default')
@@ -27,6 +27,7 @@ export default function OrderScreen({navigation}) {
 			}
 		}
 	},[dataMenu])
+	console.log(node)
 	return (
 		<SafeAreaView style={styles.container}>
 			<Text style={styles.title}>Thực đơn hôm nay</Text>
