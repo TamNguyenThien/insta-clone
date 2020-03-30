@@ -1,9 +1,9 @@
 import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
-import { HOME, MESSAGE, POST, NOTIFICATION, PROFILE, MANAMENT, MENU, REPORT, USER, PROFILETEMPLATE, HISTORY } from '../constants'
+import { HOME, ORDER, POST, NOTIFICATION, PROFILE, MANAMENT, MENU, REPORT, USER, PROFILETEMPLATE, HISTORY } from '../constants'
 import HomeScreen from '../screens/Home'
-import MessageScreen from '../screens/Message'
+import OrderStack from '../routes/OrderStack'
 import PostScreen from '../screens/Post'
 import NotificationScreen from '../screens/Notification'
 import ProfileScreen from '../screens/Profile'
@@ -13,6 +13,7 @@ import ManamentStack from '../routes/ManamentStack'
 import UserStack from '../routes/UserStack'
 import ProfileTemplateStack from '../routes/ProfileTemplateStack'
 import HistoryStack from '../routes/HistoryStack'
+import HomeStack from '../routes/HomeStack'
 
 const Tab = createBottomTabNavigator()
 
@@ -31,16 +32,16 @@ export default function BottomTabNavigator (props) {
             <FontAwesome5 name={'home'} color={color} size={size} />
           )
         }}
-        children={() => <HomeScreen {...props} />}
+        children={() => <HomeStack {...props} />}
       />
       <Tab.Screen
-        name={MESSAGE}
+        name={ORDER}
         options={{
           tabBarIcon: ({ color, size }) => (
-            <FontAwesome5 name={'comments'} color={color} size={size} />
+            <FontAwesome5 name={'ambulance'} color={color} size={size} />
           )
         }}
-        children={() => <MessageScreen {...props} />}
+        children={() => <OrderStack {...props} />}
       />
       <Tab.Screen
         name={POST}

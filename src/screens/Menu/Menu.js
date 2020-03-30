@@ -1,4 +1,4 @@
-import React, {useLayoutEffect, useState, useEffect} from 'react'
+import React, {useState, useEffect} from 'react'
 import {
 	Text,
 	StyleSheet,
@@ -15,7 +15,6 @@ import {GET_MENUS_BY_NODE, GET_NODES, SHOPS} from '../../graphql/query'
 
 export default function MenuScreen({navigation}) {
 	const [node, setNode] = useState('')
-	useLayoutEffect(() => {
 		navigation.setOptions({
 			headerRight: () => (
 				<TouchableOpacity
@@ -25,7 +24,6 @@ export default function MenuScreen({navigation}) {
 				</TouchableOpacity>
 			)
 		})
-	}, [navigation, node])
 	const {data: dataShop} = useQuery(SHOPS)
 	const {data: dataNode} = useQuery(GET_NODES)
 	const {loading, data: dataMenu, refetch: refetchMenu} = useQuery(GET_MENUS_BY_NODE, {
@@ -36,7 +34,7 @@ export default function MenuScreen({navigation}) {
 		<View style={styles.container}>
 			<Picker
 				selectedValue={node}
-				style={{height: 50, width: '50%'}}
+				style={{ width: '50%'}}
 				onValueChange={itemValue => setNode(itemValue)}>
 				{dataNode &&
 					dataNode.nodes.map(val => (
@@ -63,7 +61,7 @@ export default function MenuScreen({navigation}) {
 												if(dataShop.shops.length === 0) {
 													return alert('Chưa có Quán Ăn\nVui lòng thêm Quán ăn')
 												}
-												return navigation.navigate(MENU_DETAIL, {refetchMenu, dataShop, item, dataMenu})
+												return navigation.navigate(MENU_DETAIL, {refetchMenu, dataShop, item, dataMenu, node})
 											}
 										}>
 										<Text style={{...styles.name, ...styles.item}}>
