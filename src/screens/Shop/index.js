@@ -1,5 +1,5 @@
 import React, {useState, useLayoutEffect} from 'react'
-import {Text, StyleSheet, View, SafeAreaView, TouchableOpacity} from 'react-native'
+import {Text, StyleSheet, View, SafeAreaView, TouchableOpacity, ScrollView} from 'react-native'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 import {useQuery} from '@apollo/react-hooks'
 import {SHOPS} from '../../graphql'
@@ -24,6 +24,7 @@ export default function ShopScreen({navigation}) {
 
 	return (
 		<SafeAreaView style={styles.container}>
+      <ScrollView style={styles.scrollView}>
 			<View style={styles.header}>
 			</View>
 			<View style={styles.body}>
@@ -49,6 +50,7 @@ export default function ShopScreen({navigation}) {
 					)
 				}
 			</View>
+			</ScrollView>
 		</SafeAreaView>
 	)
 }
@@ -65,6 +67,9 @@ const styles = StyleSheet.create({
 		textAlign:'center',
 		flex:1
 	},
+	scrollView: {
+    backgroundColor: 'pink'
+  },
 	body: {	
 		marginTop: 20
 	},

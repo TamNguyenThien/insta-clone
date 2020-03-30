@@ -16,4 +16,12 @@ const GET_USERS = gql`
 	}
 `
 
-export {GET_USERS}
+const ME = gql`
+	query me {
+		me {
+			_id
+			fullName
+		}
+	}
+`
+export {GET_USERS, ME}

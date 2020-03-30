@@ -1,5 +1,5 @@
 import React, {useLayoutEffect} from 'react'
-import {Text, StyleSheet, View, TouchableOpacity, SafeAreaView} from 'react-native'
+import {Text, StyleSheet, View, TouchableOpacity, SafeAreaView, ScrollView} from 'react-native'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 import {EDIT_SHOP, DELETE_SHOP, DISH_DETAIL, CREATE_DISH} from '../../constants'
 import Loading from '../../components/Loading'
@@ -53,6 +53,7 @@ export default function MenuDetailScreen({navigation, route}) {
 								(
 									data.dishesByShop.map((item, idx) => {
 										return (
+											<ScrollView style={styles.scrollView}>
 												<TouchableOpacity 
 													onPress={() => navigation.navigate(DISH_DETAIL, {item, refetchDish})}
 													key={idx}
@@ -62,6 +63,7 @@ export default function MenuDetailScreen({navigation, route}) {
 														id={item._id} 
 													/>
 												</TouchableOpacity>
+											</ScrollView>
 										)
 									})
 								)
@@ -94,6 +96,9 @@ const styles = StyleSheet.create({
 		fontSize:20,
 		textAlign:'center',
 	},
+	scrollView: {
+    backgroundColor: 'pink'
+  },
 	icon: {
 		marginRight: 20
 	}
