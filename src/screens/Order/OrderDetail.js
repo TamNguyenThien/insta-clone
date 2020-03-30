@@ -3,12 +3,10 @@ import {ORDER, CANCEL_ORDER} from '../../constants'
 import Loading from '../../components/Loading'
 import { useQuery, useMutation } from '@apollo/react-hooks'
 import {Text, StyleSheet, View, TouchableOpacity, SafeAreaView, Alert} from 'react-native'
-import { CREATE_ORDER, ME, CANCEL_ORDER } from '../../graphql'
+import { CREATE_ORDER, ME } from '../../graphql'
 
 export default function OrderDetailScreen({navigation, route}) {
 	const {dataMenu, dish, setIsActive} = route.params
-	const [isOrder, setIsOrder] = useState(true)
-	const [cancelOrder] = useMutation(CANCEL_ORDER)
 	const {loading: loadingMe, data: dataMe} = useQuery(ME)
 	const [createOrder, {loading: loadingOrder, data: dateOrder}] = useMutation(CREATE_ORDER)
 	const Create = () => {
