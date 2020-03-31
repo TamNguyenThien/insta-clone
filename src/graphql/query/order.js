@@ -1,5 +1,25 @@
 import gql from 'graphql-tag'
 
+const GET_ORDER_AND_MENU = gql`
+	query {
+		currentUserOrder {
+			_id
+			idDish
+			idMenu
+			isConfirmed
+		}
+		menuPublished {
+			_id
+			name
+			dishes {
+				_id
+				name
+				count
+			}
+		}
+	}
+`
+
 const GET_MENU_PUBLISHED_BY_NODE = gql`
   query menuPublishedByNode($idNode: String!) {
     menuPublishedByNode(idNode: $idNode) {
@@ -28,4 +48,4 @@ const CURRENT_USER_ORDER = gql`
   }
 `
 
-export {GET_MENU_PUBLISHED_BY_NODE, CURRENT_USER_ORDER}
+export {GET_MENU_PUBLISHED_BY_NODE, CURRENT_USER_ORDER, GET_ORDER_AND_MENU}
