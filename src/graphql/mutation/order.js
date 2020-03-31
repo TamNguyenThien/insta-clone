@@ -1,27 +1,30 @@
 import gql from 'graphql-tag'
 
 const CREATE_ORDER = gql`
-  mutation createOrder($input: UserOrderInput) {
-    createOrder(input: $input) {
-      _id
-      idUser
-      idMenu
-      idDish
-      note
-      isConfirmed
-    }
-  }
+	mutation createOrder($input: UserOrderInput) {
+		createOrder(input: $input) {
+			_id
+			idUser
+			idMenu
+			idDish
+			note
+			isConfirmed
+		}
+	}
 `
+
 const CANCEL_ORDER = gql`
-  mutation cancelOrder($input: RemoveOrderInput) {
-    cancelOrder(input: $input)
-  }
+	mutation cancelOrder($input: RemoveOrderInput) {
+		cancelOrder(input: $input)
+	}
 `
+
 const CONFIRM_ORDER = gql`
-  mutation confirmOrder($orderId: ID) {
-    confirmOrder(orderId: $orderId)
-  }
+    mutation confirmOrder($orderId: ID!) {
+    	confirmOrder(orderId: $orderId)
+    }
 `
+
 const IS_ACTIVE_CONFIRM_ORDER = gql`
   query isActiveConfirmOrder {
     isActiveConfirmOrder
