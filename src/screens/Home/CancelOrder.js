@@ -3,12 +3,18 @@ import {Text, StyleSheet, View, TouchableOpacity, SafeAreaView, Alert} from 'rea
 import {HOME} from '../../constants'
 import Loading from '../../components/Loading'
 import { useQuery, useMutation } from '@apollo/react-hooks'
-import { CURRENT_USER_ORDER, CANCEL_ORDER } from '../../graphql'
+import { CONFIRM_ORDER, CANCEL_ORDER, IS_ACTIVE_CONFIRM_ORDER} from '../../graphql'
 
 export default function OrderDetailScreen({navigation, route}) {
   const {dataMenu, dish, idOrder, setIsActive} = route.params
-  const [cancelOrder] = useMutation(CANCEL_ORDER)
-  console.log('id',idOrder)
+	const [cancelOrder] = useMutation(CANCEL_ORDER)
+	const [confirmOrder] = useMutation(CONFIRM_ORDER)
+	const {loading, error, data} = useQuery(IS_ACTIVE_CONFIRM_ORDER)
+	const [isConfirm, setIsConfirm] = useState()
+
+	useEffect(() => {
+		if(!loading) setIsConfirm(data.isActiveConfirmOrder)
+	})
 	const Detele = () => {
 		Alert.alert(
 			'Hủy món ăn',
@@ -42,6 +48,20 @@ export default function OrderDetailScreen({navigation, route}) {
 			{ cancelable: false }
 		)
 	}
+
+	const Confirm = () => {
+		confirmOrder({
+			variables: {
+				orderId: idOrder
+			}
+		}).then(() => {
+			setIsActive(true)
+			navigation.navigate(HOME)
+			alert('Xác nhận thành công')
+		}).catch(error => {
+			console.log(error)
+		})
+	}
 	return (
 		<SafeAreaView style={{alignItems:'center'}}>
 			<View style={styles.container}>
@@ -50,6 +70,10 @@ export default function OrderDetailScreen({navigation, route}) {
 					</View>
 			</View>	
 			{
+				isConfirm ? 
+				<TouchableOpacity style={styles.btn} onPress={() => Confirm()}>
+					<Text style={styles.btnTxt}>Xác nhận</Text> 
+				</TouchableOpacity> :
 					<TouchableOpacity style={styles.btn} onPress={() => Detele()}>
 						<Text style={styles.btnTxt}>Hủy món</Text> 
 					</TouchableOpacity>
