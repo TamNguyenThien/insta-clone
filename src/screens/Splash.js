@@ -1,7 +1,7 @@
-import React from 'react';
-import {View, StyleSheet, Image} from 'react-native';
+import React from 'react'
+import { View, StyleSheet, Image } from 'react-native'
 
-export default function SplashScreen() {
+export default function SplashScreen () {
   return (
     <View style={styles.container}>
       <Image
@@ -9,7 +9,7 @@ export default function SplashScreen() {
         source={require('../assets/splash/image1.png')}
       />
     </View>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -17,13 +17,13 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#FFF6F9',
+    backgroundColor: '#FFF6F9'
   },
   title: {
-    color: '#000000',
+    color: '#000000'
   },
   image: {
     height: 200,
-    width: 200,
-  },
-});
+    width: 200
+  }
+})

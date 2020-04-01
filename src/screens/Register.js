@@ -16,7 +16,7 @@ export default function RegisterScreen () {
   function _onRegister (values) {
     const { phone } = values
 
-    if (phone !== '0704498756') {
+    if (phone !== '0123456789') {
       navigate('Login')
     } else {
       setErrorMessage('Phone has already existed.')
