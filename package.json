@@ -33,6 +33,7 @@
 		"formik": "^2.1.2",
 		"graphql": "^14.5.8",
 		"graphql-tag": "^2.10.1",
+		"json-server": "^0.16.1",
 		"moment": "^2.24.0",
 		"react": "16.9.0",
 		"react-native": "0.61.5",
@@ -47,8 +48,8 @@
 		"react-native-vector-icons": "^6.6.0",
 		"react-navigation": "^4.0.10",
 		"react-navigation-stack": "^2.0.15",
+		"styled-components": "^5.0.1",
 		"subscriptions-transport-ws": "^0.9.16",
-		"xlsx": "^0.15.6",
 		"yup": "^0.28.0"
 	},
 	"devDependencies": {

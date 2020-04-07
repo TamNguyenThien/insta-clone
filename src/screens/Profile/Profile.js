@@ -13,8 +13,8 @@ import { useQuery, useMutation } from '@apollo/react-hooks'
 import { Formik } from 'formik'
 import * as yup from 'yup'
 
-import { CTX } from '../tools/context'
-import { GET_INFO_PROFILE, CHANGE_PASSWORD } from '../graphql'
+import { CTX } from '../../tools/context'
+import { GET_INFO_PROFILE, CHANGE_PASSWORD } from '../../graphql'
 
 const reviewSchema = yup.object({
   currentpassword: yup.string().required('current password is required'),

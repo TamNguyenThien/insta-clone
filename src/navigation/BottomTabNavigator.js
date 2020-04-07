@@ -2,11 +2,11 @@ import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 import { HOME, POST, PROFILE } from '../constants'
-import HomeScreen from '../screens/Home'
-import MessageScreen from '../screens/Message'
-import PostScreen from '../screens/Post'
-import NotificationScreen from '../screens/Notification'
-import ProfileScreen from '../screens/Profile'
+import HomeStack from '../routes/HomeStack'
+import PostStack from '../routes/PostStack'
+import ChatStack from '../routes/ChatStack'
+import ProfileStack from '../routes/ProfileStack'
+import NotificationStack from '../routes/NotificationStack'
 
 const Tab = createBottomTabNavigator()
 
@@ -25,7 +25,17 @@ export default function BottomTabNavigator (props) {
             <FontAwesome5 name={'plus-circle'} color={color} size={size} />
           )
         }}
-        children={() => <PostScreen {...props} />}
+        children={props => <PostStack {...props} />}
+      />
+      
+      <Tab.Screen
+        name='CHAT'
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <FontAwesome5 name={'comments'} color={color} size={size} />
+          )
+        }}
+        children={props => <ChatStack {...props} />}
       />
       <Tab.Screen
         name={HOME}
@@ -34,16 +44,7 @@ export default function BottomTabNavigator (props) {
             <FontAwesome5 name={'home'} color={color} size={size} />
           )
         }}
-        children={() => <HomeScreen {...props} />}
-      />
-      <Tab.Screen
-        name='MESSAGE'
-        options={{
-          tabBarIcon: ({ color, size }) => (
-            <FontAwesome5 name={'comments'} color={color} size={size} />
-          )
-        }}
-        children={() => <MessageScreen {...props} />}
+        children={props => <HomeStack {...props} />}
       />
       <Tab.Screen
         name={PROFILE}
@@ -52,16 +53,17 @@ export default function BottomTabNavigator (props) {
             <FontAwesome5 name={'user'} color={color} size={size} />
           )
         }}
-        children={() => <ProfileScreen {...props} />}
+        children={props => <ProfileStack {...props} />}
       />
       <Tab.Screen
         name='NOTIFICATION'
+        headerMode='none'
         options={{
           tabBarIcon: ({ color, size }) => (
             <FontAwesome5 name={'bell'} color={color} size={size} />
           )
         }}
-        children={() => <NotificationScreen {...props} />}
+        children={props => <NotificationStack {...props} />}
       />
     </Tab.Navigator>
   )
